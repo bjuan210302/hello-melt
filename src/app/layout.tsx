@@ -18,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} bg-[#fff] antialiased`}>
-        {children}
+        <main className="flex flex-col min-h-screen items-center justify-center p-24">
+          {children}
+        </main>
         <NavBar className={poppins.className}></NavBar>
       </body>
     </html>

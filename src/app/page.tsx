@@ -1,6 +1,5 @@
 'use client'
 
-import { Poppins } from "next/font/google";
 import Image from "next/image";
 import { RefObject, useEffect, useRef } from "react";
 
@@ -19,7 +18,7 @@ export default function Home() {
   })
 
   const brightLetterInterval2 = setInterval(() => {
-    const keepIndex = currentLetter 
+    const keepIndex = currentLetter
     meltRefs[keepIndex].current?.classList.add('brightness-150')
     currentLetter = (currentLetter + 1) % meltLetters.length
     setTimeout(() => meltRefs[keepIndex].current?.classList.remove('brightness-150'), 500)
@@ -31,15 +30,15 @@ export default function Home() {
     }
   }, [])
   return (
-    <main className="flex flex-col min-h-screen items-center justify-center p-24">
+    <>
       <div className="font-semibold text-[70px] text-[#101828]">
         Hello,
         <span className={`font-light text-[#717BBC] ml-4`}>
           {meltNodes}
         </span>
       </div>
-      <Image className="hover:drop-shadow-[10px_0px_60px_rgba(113,123,188,0.80)] transition-all"
+      <Image className="hover:scale-110 transition-all"
         src={"/Black-500.webp"} alt={"Melt Studio Logo"} width={144 * 1.2} height={144 * 1.2} />
-    </main>
+    </>
   );
 }
