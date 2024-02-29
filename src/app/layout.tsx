@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "../ui/NavBar";
+import StoreProvider from "./StoreProvider";
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['300', '400', '600'] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} bg-[#fff] antialiased`}>
         <main className="flex flex-col min-h-screen items-center justify-center p-24">
-          {children}
+          <StoreProvider>
+            {children}
+          </StoreProvider>
         </main>
         <NavBar className={poppins.className}></NavBar>
       </body>
