@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import doublerReducer from './features/doubler/doublerSlice'
+import taskReducer from './features/doubler/doublerSlice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      doubler: doublerReducer
+      tasker: taskReducer
     }
   })
 }

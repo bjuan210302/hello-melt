@@ -16,9 +16,9 @@ export const NavBar = (props: { className?: string }) => {
     >
       <Link className={`${pathname === '/' ? 'text-indigo-300' : ''} hover:text-indigo-300 transition-all`} href="/">Home</Link>
 
-      <Link className={`${pathname === '/route2' ? 'text-indigo-300' : ''} hover:text-indigo-300 transition-all`} href="route2">
+      <Link className={`${pathname === '/tasks' ? 'text-indigo-300' : ''} hover:text-indigo-300 transition-all`} href="tasks">
         <span className="tracking-widest opacity-40">/</span>
-        route2
+        tasks
       </Link>
       <Link className={`${pathname === '/route3' ? 'text-indigo-300' : ''} hover:text-indigo-300 transition-all`} href="route3">
         <span className="tracking-widest opacity-40">/</span>

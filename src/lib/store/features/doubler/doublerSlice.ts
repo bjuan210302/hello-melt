@@ -1,19 +1,39 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-const counterSlice = createSlice({
-  name: 'doubler',
+export type Task = {
+  id: string,
+  name: string,
+  status: 'completed' | 'pending'
+}
+
+const taskSlice = createSlice({
+  name: 'tasker',
   initialState: {
-    value: 1
+    task: [] as Task[],
+    pending: [] as Task[]
   },
   reducers: {
-    double: state => { state.value *= 2 },
-    halv: state => { state.value /= 1 },
-    doubleNTimes: (state, action) => {
-      state.value *= 2 * action.payload
+    addTask: (state, action: PayloadAction<string>) => {
+      console.log(action.payload)
+      state.task.push({
+        name: action.payload,
+        id: crypto.randomUUID(),
+        status: 'pending',
+      })
+    },
+    markAsCompleted: (state, action: PayloadAction<string>) => {
+      const taskToComplete = state.task.find(t => t.id === action.payload)
+      if (!taskToComplete) {
+        console.log(`No existe task con id ${action.payload}`)
+        return
+      }
+
+      taskToComplete.status = 'completed'
     }
   }
 })
 
-export const { double, halv, doubleNTimes } = counterSlice.actions
+export const { addTask, markAsCompleted } = taskSlice.actions
 
-export default counterSlice.reducer
+
+export default taskSlice.reducer
